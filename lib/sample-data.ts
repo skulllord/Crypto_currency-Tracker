@@ -1,0 +1,111 @@
+import type { CryptoAsset } from "./features/crypto/cryptoSlice"
+
+// Generate random price history data
+function generatePriceHistory(basePrice: number, volatility: number, length = 50): number[] {
+  const history = [basePrice]
+  for (let i = 1; i < length; i++) {
+    const change = (Math.random() - 0.5) * volatility
+    const newPrice = history[i - 1] * (1 + change)
+    history.push(Math.max(newPrice, basePrice * 0.5)) // Prevent prices from going too low
+  }
+  return history
+}
+
+export const initialCryptoData: CryptoAsset[] = [
+  {
+    id: "bitcoin",
+    name: "Bitcoin",
+    symbol: "BTC",
+    logo: "/placeholder.svg?height=32&width=32",
+    price: 93759.48,
+    priceChange1h: 0.43,
+    priceChange24h: 0.93,
+    priceChange7d: 11.11,
+    marketCap: 1861618902186,
+    volume24h: 43874950947,
+    volumeInCrypto: 467.81,
+    circulatingSupply: 19.85,
+    maxSupply: 21,
+    priceHistory: generatePriceHistory(93759.48, 0.01, 50),
+  },
+  {
+    id: "ethereum",
+    name: "Ethereum",
+    symbol: "ETH",
+    logo: "/placeholder.svg?height=32&width=32",
+    price: 1802.46,
+    priceChange1h: 0.6,
+    priceChange24h: 3.21,
+    priceChange7d: 13.68,
+    marketCap: 217581279327,
+    volume24h: 23547469307,
+    volumeInCrypto: 13.05,
+    circulatingSupply: 120.71,
+    maxSupply: null,
+    priceHistory: generatePriceHistory(1802.46, 0.01, 50),
+  },
+  {
+    id: "tether",
+    name: "Tether",
+    symbol: "USDT",
+    logo: "/placeholder.svg?height=32&width=32",
+    price: 1.0,
+    priceChange1h: -0.0,
+    priceChange24h: -0.0,
+    priceChange7d: 0.04,
+    marketCap: 145320022085,
+    volume24h: 92288882007,
+    volumeInCrypto: 92.25,
+    circulatingSupply: 145.27,
+    maxSupply: null,
+    priceHistory: generatePriceHistory(1.0, 0.001, 50),
+  },
+  {
+    id: "xrp",
+    name: "XRP",
+    symbol: "XRP",
+    logo: "/placeholder.svg?height=32&width=32",
+    price: 2.22,
+    priceChange1h: 0.46,
+    priceChange24h: 0.54,
+    priceChange7d: 6.18,
+    marketCap: 130073814966,
+    volume24h: 5131481491,
+    volumeInCrypto: 2.3,
+    circulatingSupply: 58.39,
+    maxSupply: 100,
+    priceHistory: generatePriceHistory(2.22, 0.01, 50),
+  },
+  {
+    id: "bnb",
+    name: "BNB",
+    symbol: "BNB",
+    logo: "/placeholder.svg?height=32&width=32",
+    price: 606.65,
+    priceChange1h: 0.09,
+    priceChange24h: -1.2,
+    priceChange7d: 3.73,
+    marketCap: 85471956947,
+    volume24h: 1874281784,
+    volumeInCrypto: 3.08,
+    circulatingSupply: 140.89,
+    maxSupply: 200,
+    priceHistory: generatePriceHistory(606.65, 0.01, 50),
+  },
+  {
+    id: "solana",
+    name: "Solana",
+    symbol: "SOL",
+    logo: "/placeholder.svg?height=32&width=32",
+    price: 151.51,
+    priceChange1h: 0.53,
+    priceChange24h: 1.26,
+    priceChange7d: 14.74,
+    marketCap: 78381958631,
+    volume24h: 4881674486,
+    volumeInCrypto: 32.25,
+    circulatingSupply: 517.31,
+    maxSupply: null,
+    priceHistory: generatePriceHistory(151.51, 0.02, 50),
+  },
+]
